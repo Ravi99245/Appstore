@@ -1,0 +1,38 @@
+.bg-container {
+  background: linear-gradient(to bottom, #fff1eb, #ace0f9);
+  min-height: 100vh;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Bree Serif';
+}
+
+.input {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-style: solid;
+  color: #000000;
+  border-width: 1px;
+  border-radius: 5px;
+  width: 20%;
+}
+
+.search-icon {
+  width: 25px;
+}
+
+.input-element {
+  border: none;
+  background-color: transparent;
+  width: 90%;
+  height: 35px;
+  padding: 5px;
+  padding-left: 10px;
+}
+.tabs {
+  list-style-type: none;
+  display: flex;
+}
