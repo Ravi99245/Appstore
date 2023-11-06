@@ -1,5 +1,16 @@
 .button {
   background-color: transparent;
   border: none;
+  cursor: pointer;
+  outline: none;
+  font-family: 'Roboto';
+  font-size: 18px;
+  color: #7b8794;
+}
+
+.highlighted {
+  color: #2563eb;
+  font-family: 'Bree Serif';
+  font-size: 18px;
   text-decoration: underline;
 }

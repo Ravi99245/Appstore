@@ -1,6 +1,7 @@
 import {Component} from 'react'
 import './index.css'
 import TabItem from '../TabItem'
+import AppItem from '../AppItem'
 
 const tabsList = [
   {tabId: 'SOCIAL', displayText: 'Social'},
@@ -292,17 +293,39 @@ const appsList = [
 ]
 
 class AppStore extends Component {
-  state = {activeTabId: tabsList[0].tabId}
+  state = {searchInput: '', activeTabId: tabsList[0].tabId}
+
+  onChangeSearchInput = event => {
+    this.setState({searchInput: event.target.value})
+  }
+
+  changeTableId = tabId => {
+    this.setState({activeTabId: tabId})
+  }
 
   render() {
-    const {activeTabId} = this.state
+    const {activeTabId, searchInput} = this.state
+    console.log(searchInput)
     console.log(appsList)
     console.log(activeTabId)
+    const filteredList = appsList.filter(eachItem =>
+      eachItem.appName.toLowerCase().includes(searchInput.toLowerCase()),
+    )
+
+    const selectedTabList = filteredList.filter(
+      eachItem => eachItem.category === activeTabId,
+    )
+
     return (
       <div className="bg-container">
         <h1 className="heading">App Store</h1>
         <div className="input">
-          <input type="search" className="input-element" placeholder="Search" />
+          <input
+            type="search"
+            className="input-element"
+            placeholder="Search"
+            onChange={this.onChangeSearchInput}
+          />
           <img
             src="https://assets.ccbp.in/frontend/react-js/app-store/app-store-search-img.png"
             className="search-icon"
@@ -315,7 +338,13 @@ class AppStore extends Component {
               key={eachTab.tabId}
               eachtTab={eachTab}
               isActiveTabId={activeTabId === eachTab.tabId}
+              clickTabItem={this.changeTableId}
             />
+          ))}
+        </ul>
+        <ul className="app-container">
+          {selectedTabList.map(eachItem => (
+            <AppItem key={eachItem.appId} eachItem={eachItem} />
           ))}
         </ul>
       </div>

@@ -35,4 +35,11 @@
 .tabs {
   list-style-type: none;
   display: flex;
+  padding-left: 0px;
+}
+
+.app-container {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
 }
